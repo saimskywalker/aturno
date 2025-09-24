@@ -1,0 +1,69 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      
+      // Frontend Layer
+      "@/frontend": ["./src/frontend"],
+      "@/frontend/*": ["./src/frontend/*"],
+      "@/components": ["./src/frontend/components"],
+      "@/components/*": ["./src/frontend/components/*"],
+      "@/screens": ["./src/frontend/screens"],
+      "@/screens/*": ["./src/frontend/screens/*"],
+      "@/features": ["./src/frontend/features"],
+      "@/features/*": ["./src/frontend/features/*"],
+      
+      // Backend Layer  
+      "@/backend": ["./src/backend"],
+      "@/backend/*": ["./src/backend/*"],
+      "@/services": ["./src/backend/services"],
+      "@/services/*": ["./src/backend/services/*"],
+      "@/api": ["./src/backend/api"],
+      "@/api/*": ["./src/backend/api/*"],
+      
+      // Shared Layer
+      "@/shared": ["./src/shared"],
+      "@/shared/*": ["./src/shared/*"],
+      "@/lib": ["./src/shared/utils"],
+      "@/lib/*": ["./src/shared/utils/*"],
+      "@/utils": ["./src/shared/utils"],
+      "@/utils/*": ["./src/shared/utils/*"],
+      "@/types": ["./src/shared/types"],
+      "@/types/*": ["./src/shared/types/*"],
+      "@/hooks": ["./src/shared/hooks"],
+      "@/hooks/*": ["./src/shared/hooks/*"],
+      "@/constants": ["./src/shared/constants"],
+      "@/constants/*": ["./src/shared/constants/*"],
+      
+      // Legacy paths (for gradual migration)
+      "@/contexts": ["./src/contexts"],
+      "@/contexts/*": ["./src/contexts/*"],
+      "@/providers": ["./src/providers"],
+      "@/providers/*": ["./src/providers/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

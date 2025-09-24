@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Test</title>
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #0f0f23;
+            --muted: #f8f9fa;
+            --muted-foreground: #6b7280;
+            --accent: #5e6ad2;
+            --accent-foreground: #ffffff;
+            --destructive: #ef4444;
+            --border: #e5e7eb;
+            --input: #f3f4f6;
+            --ring: #5e6ad2;
+            --card: #ffffff;
+            --card-foreground: #0f0f23;
+            --secondary: #f3f4f6;
+            --secondary-foreground: #374151;
+        }
+
+        .dark {
+            --background: #0d1117;
+            --foreground: #f0f6fc;
+            --muted: #161b22;
+            --muted-foreground: #8b949e;
+            --accent: #7c3aed;
+            --accent-foreground: #ffffff;
+            --destructive: #f85149;
+            --border: #30363d;
+            --input: #21262d;
+            --ring: #7c3aed;
+            --card: #161b22;
+            --card-foreground: #f0f6fc;
+            --secondary: #21262d;
+            --secondary-foreground: #c9d1d9;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--foreground);
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background: var(--accent);
+            color: var(--accent-foreground);
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .status {
+            background: var(--muted);
+            color: var(--muted-foreground);
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Theme Switching Test</h1>
+
+        <div class="card">
+            <h2>Current Theme: <span id="current-theme">Light</span></h2>
+            <button class="button" onclick="toggleTheme()">Toggle Theme</button>
+            <div class="status">
+                <strong>HTML Class:</strong> <span id="html-class"></span><br>
+                <strong>Background:</strong> <span id="bg-color"></span><br>
+                <strong>Foreground:</strong> <span id="fg-color"></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Test Content</h3>
+            <p>This is a test card with sample content to verify theme switching works properly.</p>
+            <p>Background color: <span id="bg-display"></span></p>
+            <p>Text color: <span id="fg-display"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+
+            if (isDark) {
+                html.classList.remove('dark');
+                updateThemeInfo('Light');
+            } else {
+                html.classList.add('dark');
+                updateThemeInfo('Dark');
+            }
+        }
+
+        function updateThemeInfo(theme) {
+            document.getElementById('current-theme').textContent = theme;
+            document.getElementById('html-class').textContent = document.documentElement.className;
+
+            const computedStyle = getComputedStyle(document.documentElement);
+            const bgColor = computedStyle.getPropertyValue('--background').trim();
+            const fgColor = computedStyle.getPropertyValue('--foreground').trim();
+
+            document.getElementById('bg-color').textContent = bgColor;
+            document.getElementById('fg-color').textContent = fgColor;
+            document.getElementById('bg-display').textContent = bgColor;
+            document.getElementById('fg-display').textContent = fgColor;
+        }
+
+        // Initialize
+        updateThemeInfo('Light');
+    </script>
+</body>
+</html>
